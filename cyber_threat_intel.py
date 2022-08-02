@@ -127,18 +127,18 @@ def urlgrab (host, pattern):
         print(e)
         sys.exit(1)
 
-def writeToFile (source_path, threat_list, filename):
+def writeToFile(source_path, threat_list, filename):
     ''' Write updated threat intel to correct file and directory '''
     # check if file already exists, if it does, overwrite it. If the file doesn't exist, create it.
     if os.path.isfile(source_path+filename):
         f = open(source_path+filename, 'r+')
         f.writelines(threat_list)
         f.truncate()
-        f.close()
     else:
         f = open(source_path+filename, 'w+')
         f.writelines(threat_list)
-        f.close()
+
+    f.close()
 
 def createCSV(source_path, directory, oFile, header):
     ''' Create a two column csv file with threat and source for the columns '''
@@ -167,7 +167,7 @@ def main():
     # Pull them down from the interwebs and format them
     # Write them to file.
     for filename, source in open_source_threat_intel.iteritems():
-        print("[+] Grabbing: " + source)
+        print(f"[+] Grabbing: {source}")
         threat_list=urlgrab(source, ip)
         writeToFile(file_path, threat_list, filename)
 

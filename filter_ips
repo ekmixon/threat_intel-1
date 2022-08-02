@@ -15,14 +15,11 @@ def regex(input):
     return '\n'.join(ip_list)
 
 
-file1 = open(input, 'r')
-text = file1.read()
-ip_list = regex(text)
-file1.close()
-
-file2 = open(output, 'w')
-file2.write(str(ip_list))
-file2.close()
+with open(input, 'r') as file1:
+    text = file1.read()
+    ip_list = regex(text)
+with open(output, 'w') as file2:
+    file2.write(str(ip_list))
 
 
 

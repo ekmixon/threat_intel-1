@@ -14,12 +14,12 @@ ip_range = options.ip_range
 
 def cidr():
     for ip in IPNetwork(ip_cidr):
-        print ('%s' % ip)
+        print(f'{ip}')
 
 def ipRange():
-   ip_list = list(iter_iprange(ip_range.split('-')[0], ip_range.split('-')[1]))
-   for ip in ip_list:
-       print ('%s' % ip)
+    ip_list = list(iter_iprange(ip_range.split('-')[0], ip_range.split('-')[1]))
+    for ip in ip_list:
+        print(f'{ip}')
 
 def main():
     if (ip_cidr != None):
